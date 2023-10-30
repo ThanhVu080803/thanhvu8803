@@ -2,42 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Trang chu</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Trang chủ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">BÁN HÀNG TRỰC TUYẾN</a>
+        <a class="navbar-brand" href="javascript:void(0)">BÁN HÀNG TRỰC TUYẾN</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+                {% for c in categories %}
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)">{{ c.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <form class="d-flex" method="get" action="/">
+                <input class="form-control me-2" type="text" name="kw" placeholder="Nhập từ khóa.....">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
         </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            {% for c in categories %}
-            <li><a href="#">{{ c.name }}</a></li>
-            {% endfor %}
-        </ul>
     </div>
 </nav>
 
-<section>
+<section class="container">
     <div class="row">
-        <div class="col-xs-12 col-md-3">
-            {% for p in products %}
+        {% for p in products %}
+        <div class="col-xs-12 col-md-3" style="padding: 5px">
             <div class="card">
                 <img class="card-img-top" src="{{ p.image }}" alt="Card image">
                 <div class="card-body">
                     <h4 class="card-title">{{ p.name }}</h4>
-                    <p class="card-text">{{ p.price }}</p>
-                    <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                    <a href="#" class="btn btn-primary">Đặt hàng</a>
+                    <p class="card-text">{{ p.price }} VNĐ</p>
+                    <a href="#" class="btn btn-primary">Xem chi tiêt</a>
+                    <a href="#" class="btn btn-danger">Đặt hàng</a>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
 </section>
 </body>
