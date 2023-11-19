@@ -6,8 +6,6 @@
 <h1 class="text-center text-info">CHÀO MỪNG BẠN ĐẾN TRANG QUẢN TRỊ :))))</h1>
 <h2>Chào {{ current_user.name }}</h2>
 {% else %}
-{% endif %}
-
 <h1 class="text-center text-info">ĐĂNG NHẬP TRANG QUẢN TRỊ :))))</h1>
 <form action="/action_page.php">
   <div class="mb-3 mt-3">
@@ -22,4 +20,6 @@
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+{% endif %}
+
 {% endblock %}

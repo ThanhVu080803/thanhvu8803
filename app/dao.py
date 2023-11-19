@@ -1,4 +1,4 @@
-from app.models import Category, Product
+from app.models import Category, Product, User
 def get_categories():
     return  Category.query.all()
 def get_products(kw):
